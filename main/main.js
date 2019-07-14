@@ -89,5 +89,11 @@ const calculateSumOfSubtotal=(receiptInformation)=>{
     return sumOfSubtotal;
 }
 
+const getTotalPromotionPrice=(receiptInformation)=>{
+    let totalPromotionPrice=receiptInformation.reduce((sum,currentValue)=>sum+(currentValue.number*currentValue.unitPrice-currentValue.subtotal),0);
+    return totalPromotionPrice;
+}
+
+
 
 

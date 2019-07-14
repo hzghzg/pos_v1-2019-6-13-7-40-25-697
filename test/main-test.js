@@ -64,5 +64,10 @@ it('return sumOfSubtotal when call calculateSumOfSubtotal given receiptInformati
   expect( calculateSumOfSubtotal(receiptInformation)).toEqual(55.5);
 })
 
+it('return totalPromotionPrice when call getTotalPromotionPrice given receiptInformation', () => {
+  expect( getTotalPromotionPrice(receiptInformation)).toEqual(10.5);
+})
+
+
 
 });
