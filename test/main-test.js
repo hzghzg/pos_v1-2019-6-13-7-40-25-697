@@ -79,7 +79,7 @@ it('return totalPromotionPrice when call getTotalPromotionPrice given receiptInf
 })
 
 it('return receipt when call printReceipt given receiptInformation,sumOfSubtotal and totalPromotionPrice', () => {
-  expect( printReceipt(receiptInformation,sumOfSubtotal,totalPromotionPrice)).toBe(receipt);
+  expect( printReceipt(tags)).toBe(receipt);
 })
 
 

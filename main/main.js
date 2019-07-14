@@ -103,7 +103,11 @@ const getTotalPromotionPrice=(receiptInformation)=>{
     return totalPromotionPrice;
 }
 
-const printReceipt=(receiptInformation,sumOfSubtotal,totalPromotionPrice)=>{
+const printReceipt=(barcodes)=>{
+    let detailBarcodesInfo=getDetailBarcodesInfo(barcodes);
+    let receiptInformation=calculateSubtotal(detailBarcodesInfo);
+    let sumOfSubtotal=calculateSumOfSubtotal(receiptInformation);
+    let totalPromotionPrice=getTotalPromotionPrice(receiptInformation);
     let receipt=`***<没钱赚商店>收据***\n`;
     let detailInfo=receiptInformation.map(item=>`名称：${item.name}，数量：${item.number}${item.unit}，单价：${item.unitPrice}(元)，小计：${item.subtotal}(元)`);
     receipt+=detailInfo.reduce((previousValue,currentValue)=>previousValue+currentValue+'\n','');
