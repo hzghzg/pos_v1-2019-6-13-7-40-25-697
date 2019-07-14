@@ -19,7 +19,7 @@ const getDetailBarcodesInfo=(barcodes)=>{
     }
 }
 
-const callback=(previousValue,currentValue)=>{
+const callback=(previousValue,currentValue)=>{//主要用来处理条形码并返回具有详细信息的对象数组
     const itemList=loadAllItems();
     if(previousValue.length==0){
         let obj={};
@@ -80,7 +80,7 @@ const calculateSubtotal=(detailBarcodesInfo)=>{
     return receiptInformation;
 }
 
-const callback1=(previousValue,currentValue)=>{
+const callback1=(previousValue,currentValue)=>{//主要用来处理条形码并返回具有详细信息的对象数组
     let promotionBarcodeslist=loadPromotions()[0].barcodes;
     if(promotionBarcodeslist.includes(currentValue.barcode)){
         let subtotal=(currentValue.number-parseInt(currentValue.number/2))*currentValue.unitPrice;
