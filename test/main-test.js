@@ -14,6 +14,16 @@ describe('pos', () => {
       'ITEM000005',
       'ITEM000005-2',
     ];
+    const tags1 = [
+      'ITEM000001',
+      'ITEM000001',
+      'ITEM000001',
+      'ITEM000001',
+      'ITEM000001',
+      'ITEM000003-2.5',
+      'ITEM000010'
+    ];
+
 
 //     spyOn(console, 'log');
 
@@ -35,14 +45,14 @@ it('return true when all elements in barcodes are right', () => {
   expect(isBarcodesValid(tags)).toBe(true);
 })
 it('return false when some elements in barcodes are wrong', () => {
-  expect(isBarcodesValid([
-    'ITEM000001',
-    'ITEM000001',
-    'ITEM000001',
-    'ITEM000001',
-    'ITEM000001',
-    'ITEM000003-2.5',
-    'ITEM000010'
-  ])).toBe(false);
+  expect(isBarcodesValid(tags1)).toBe(false);
 })
+
+it('return detailBarcodesInfo when  call getDetailBarcodesInfo given barcodes', () => {
+  expect( getDetailBarcodesInfo(tags)).toEqual([{barcode: "ITEM000001",number: 5,unitPrice: 3},{barcode: "ITEM000003",number: 2.5,unitPrice: 15},{barcode: "ITEM000005",number: 3,unitPrice: 4.5}]);
+})
+it('return "The barcodes are wrong!" when call getDetailBarcodesInfo given wrong barcodes', () => {
+  expect( getDetailBarcodesInfo(tags1)).toBe("The barcodes are wrong!");
+})
+
 });
