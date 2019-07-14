@@ -67,3 +67,22 @@ const getDetailBarcodesInfo=(barcodes)=>{
 }
 
 
+const callback1=(previousValue,currentValue)=>{
+    let promotionBarcodeslist=loadPromotions()[0].barcodes;
+    if(promotionBarcodeslist.includes(currentValue.barcode)){
+        let subtotal=(currentValue.number-parseInt(currentValue.number/2))*currentValue.unitPrice;
+        currentValue.subtotal=subtotal;
+    }
+    else{
+        let subtotal=currentValue.number*currentValue.unitPrice;
+        currentValue.subtotal=subtotal;
+    }
+    return previousValue;
+}
+const calculateSubtotal=(detailBarcodesInfo)=>{
+    let receiptInformation=detailBarcodesInfo.reduce(callback1,detailBarcodesInfo);
+    return receiptInformation;
+}
+
+
+

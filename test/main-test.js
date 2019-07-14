@@ -55,4 +55,9 @@ it('return "The barcodes are wrong!" when call getDetailBarcodesInfo given wrong
   expect( getDetailBarcodesInfo(tags1)).toBe("The barcodes are wrong!");
 })
 
+it('return receiptInformation when call calculateSubtotal given detailBarcodesInfo', () => {
+  expect( calculateSubtotal(getDetailBarcodesInfo(tags))).toEqual([{barcode: "ITEM000001",number: 5,unitPrice: 3,subtotal: 9},{barcode: "ITEM000003",number: 2.5,unitPrice: 15,subtotal: 37.5},{barcode: "ITEM000005",number: 3,unitPrice: 4.5,subtotal: 9}]);
+})
+
+
 });
