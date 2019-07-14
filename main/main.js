@@ -84,5 +84,10 @@ const calculateSubtotal=(detailBarcodesInfo)=>{
     return receiptInformation;
 }
 
+const calculateSumOfSubtotal=(receiptInformation)=>{
+    let sumOfSubtotal=receiptInformation.reduce((sum,currentValue)=>sum+currentValue.subtotal,0);
+    return sumOfSubtotal;
+}
+
 
 

@@ -23,7 +23,8 @@ describe('pos', () => {
       'ITEM000003-2.5',
       'ITEM000010'
     ];
-
+const detailBarcodesInfo=getDetailBarcodesInfo(tags);
+const receiptInformation=calculateSubtotal(getDetailBarcodesInfo(tags));
 
 //     spyOn(console, 'log');
 
@@ -56,7 +57,11 @@ it('return "The barcodes are wrong!" when call getDetailBarcodesInfo given wrong
 })
 
 it('return receiptInformation when call calculateSubtotal given detailBarcodesInfo', () => {
-  expect( calculateSubtotal(getDetailBarcodesInfo(tags))).toEqual([{barcode: "ITEM000001",number: 5,unitPrice: 3,subtotal: 9},{barcode: "ITEM000003",number: 2.5,unitPrice: 15,subtotal: 37.5},{barcode: "ITEM000005",number: 3,unitPrice: 4.5,subtotal: 9}]);
+  expect( calculateSubtotal(detailBarcodesInfo)).toEqual([{barcode: "ITEM000001",number: 5,unitPrice: 3,subtotal: 9},{barcode: "ITEM000003",number: 2.5,unitPrice: 15,subtotal: 37.5},{barcode: "ITEM000005",number: 3,unitPrice: 4.5,subtotal: 9}]);
+})
+
+it('return sumOfSubtotal when call calculateSumOfSubtotal given receiptInformation', () => {
+  expect( calculateSumOfSubtotal(receiptInformation)).toEqual(55.5);
 })
 
 
